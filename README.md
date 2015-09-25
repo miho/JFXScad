@@ -5,9 +5,9 @@ JFXScad
 
 JavaFX 3D Printing IDE based on [JCSG](https://github.com/miho/JCSG).
 
-![](/resources/img/screenshot-03.png)
+![](/resources/img/screenshot-02.png)
 
-![](http://thingiverse-production.s3.amazonaws.com/renders/0c/a0/c0/dc/53/IMG_20140329_201814_preview_featured.jpg)
+![](/resources/img/screenshot-03.png)
 
 ## How to Build JFXScad
 
@@ -17,10 +17,20 @@ JavaFX 3D Printing IDE based on [JCSG](https://github.com/miho/JCSG).
 - Internet connection (dependencies are downloaded automatically)
 - IDE: [Gradle](http://www.gradle.org/) Plugin (not necessary for command line usage)
 
-### IDE
+### IDE (with Gradle Plugin)
 
-Open the `JFXScad` [Gradle](http://www.gradle.org/) project in your favourite IDE (tested with NetBeans 7.4) and build it
+Open the `JFXScad` [Gradle](http://www.gradle.org/) project in your favourite IDE (tested with NetBeans 8) and build it
 by calling the `assemble` task.
+
+### IDE (without Gradle Plugin)
+
+#### Eclipse
+
+Call the `eclipse` task from the command line and import the project to your workspace.
+
+#### IntelliJ
+
+Call the `idea` task from the command line and open the project.
 
 ### Command Line
 
