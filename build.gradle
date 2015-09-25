@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply from: 'libs/gradle/javafx.plugin'
 
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
@@ -25,14 +26,14 @@ repositories {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.1'
+    gradleVersion = '2.6'
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.10'
 
     compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.6.9'
-    compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.6.9', classifier: 'sources'
+//    compile group: 'org.fxmisc.richtext', name: 'richtextfx', version: '0.6.9', classifier: 'sources'
   
     //    compile group: 'org.codehaus.groovy', name: 'groovy', version:'2.3.0-SNAPSHOT';
     //    compile group: 'org.codehaus.groovy', name: 'groovy', version:'2.3.0-SNAPSHOT', classifier: 'sources';
@@ -53,21 +54,54 @@ dependencies {
 // create a fat-jar (class files plus dependencies
 // excludes VRL.jar (plugin jar files must not start with 'vrl-\\d+')
 jar {
+//
+//    // dependencies except VRL
+//    from configurations.runtime.asFileTree.
+//        filter({file->return !file.name.startsWith("vrl-0")}).
+//        files.collect { zipTree(it) }
+//
+//    // project class files compiled from source
+//    from files(sourceSets.main.output.classesDir)
+//    
+//    manifest { attributes 'Main-Class': mainClass }
+}
 
-    // dependencies except VRL
-    from configurations.runtime.asFileTree.
-        filter({file->return !file.name.startsWith("vrl-0")}).
-        files.collect { zipTree(it) }
+//task run(type: JavaExec) {
+//    classpath = sourceSets.main.runtimeClasspath
+//    main = mainClass;
+//    jvmArgs = ['-Dprism.forceGPU=true', '-Dprism.verbose=true', '-Dprism.order=es2,d3d,sw']
+////    jvmArgs = ['-Dprism.forceGPU=true']
+//}
 
-    // project class files compiled from source
-    from files(sourceSets.main.output.classesDir)
+javafx {
+    appID 'eu.mihosoft.jfxscad'
+    appName 'JFXScad'
+    mainClass project.mainClass
     
-    manifest { attributes 'Main-Class': mainClass }
+    // deploy/info attributes
+    category = 'JFXScad'
+    copyright = 'Copyright (c) 2015 Michel Hoffer (info@michaelhoffer.de)'
+    description = 'JFXScad'
+    licenseType = 'Open Source'
+    vendor = 'Michael Hoffer'
+    installSystemWide = false
+    menu = true
+    shortcut = true
+    
+//    // app icons
+//    icons {
+//        shortcut = ['shortcut-16.png', 'shortcut-32.png', 'shortcut-128.png', 'shortcut-256.png', 'shortcut-16@2x.png', 'shortcut-32@2x.png', 'shortcut-128@2x.png']
+//        volume = 'javafx-icon.png'
+//        setup = 'javafx-icon.png'
+//    }
+
+//    icons {
+//        shortcut = ['event-handler-icon-01.png']
+//    }
 }
 
-task run(type: JavaExec) {
-    classpath = sourceSets.main.runtimeClasspath
-    main = mainClass;
-    jvmArgs = ['-Dprism.forceGPU=true', '-Dprism.verbose=true', '-Dprism.order=es2,d3d,sw']
-//    jvmArgs = ['-Dprism.forceGPU=true']
-}
+ jfxDeploy {
+//    packaging = "installer"
+    packaging = "image"
+    verbose = true
+ }
