@@ -26,26 +26,26 @@ public class BreadBoardConnector {
         double ph = pegHeight;
         double po = pegOverlap;
 
-        return Extrude.points(new Vector3d(0, 0, connectorDepth),
-                new Vector3d(-th, -th),
-                new Vector3d(smh + pth + ph, -th),
-                new Vector3d(smh + pth + Math.max(ph / 3, 0.4), 0 + po),
-                new Vector3d(smh + pth, 0 + po),
-                new Vector3d(smh, 0),
-                new Vector3d(0, 0),
-                new Vector3d(0, bmth),
-                new Vector3d(smh, bmth),
-                new Vector3d(smh, bmth + th),
-                new Vector3d(0, bmth + th),
-                new Vector3d(0, bmth +bbpbd-th),
-                new Vector3d(smh, bmth +bbpbd-th),
-                new Vector3d(smh, bmth + th + bbpbd - th),
-                new Vector3d(0, bmth + th + bbpbd - th),
-                new Vector3d(0, bmth + th + bbpbd + bbth),
-                new Vector3d(smh, bmth + th +bbpbd + bbth),
-                new Vector3d(smh, bmth + th +bbpbd + bbth + th),
-                new Vector3d(0, bmth + th +bbpbd + bbth + th),
-                new Vector3d(-th, bmth + th +bbpbd + bbth + th)
+        return Extrude.points(Vector3d.xyz(0, 0, connectorDepth),
+                Vector3d.xy(-th, -th),
+                Vector3d.xy(smh + pth + ph, -th),
+                Vector3d.xy(smh + pth + Math.max(ph / 3, 0.4), 0 + po),
+                Vector3d.xy(smh + pth, 0 + po),
+                Vector3d.xy(smh, 0),
+                Vector3d.xy(0, 0),
+                Vector3d.xy(0, bmth),
+                Vector3d.xy(smh, bmth),
+                Vector3d.xy(smh, bmth + th),
+                Vector3d.xy(0, bmth + th),
+                Vector3d.xy(0, bmth +bbpbd-th),
+                Vector3d.xy(smh, bmth +bbpbd-th),
+                Vector3d.xy(smh, bmth + th + bbpbd - th),
+                Vector3d.xy(0, bmth + th + bbpbd - th),
+                Vector3d.xy(0, bmth + th + bbpbd + bbth),
+                Vector3d.xy(smh, bmth + th +bbpbd + bbth),
+                Vector3d.xy(smh, bmth + th +bbpbd + bbth + th),
+                Vector3d.xy(0, bmth + th +bbpbd + bbth + th),
+                Vector3d.xy(-th, bmth + th +bbpbd + bbth + th)
         );
 
     }

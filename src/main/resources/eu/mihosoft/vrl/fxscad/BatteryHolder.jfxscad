@@ -31,27 +31,27 @@ public class BatteryHolder {
         
         double o = 13;
 
-        return Extrude.points(new Vector3d(0, 0, connectorDepth),
-                new Vector3d(-th, -th),
-                new Vector3d(smh + pth + ph+o, -th),
-                new Vector3d(smh + pth + Math.max(ph / 3, 0.4)+o, 0 + po),
-                new Vector3d(smh + pth+o, 0 + po),
-                new Vector3d(smh+o, 0),
-                new Vector3d(0+o, 0),
-                new Vector3d(0+o, mth),
-                new Vector3d(smh+o, mth),
-                new Vector3d(smh+o, mth + th),
-                new Vector3d(0, mth + th),
-                new Vector3d(0, mth + th + batteryHeight),
-                new Vector3d(batteryLength, mth + th + batteryHeight),
-                new Vector3d(batteryLength, mth + th + batteryHeight * 0.3),
-                new Vector3d(batteryLength + th, mth + th + batteryHeight * 0.3),
-                new Vector3d(batteryLength + th, mth + th + batteryHeight + th),
-                new Vector3d(0, mth + th + batteryHeight + th),
-                new Vector3d(0, mth + th + batteryHeight + th + footHeight - th * 2),
-                new Vector3d(footSize, mth + th + batteryHeight + th + footHeight - th),
-                new Vector3d(footSize, mth + th + batteryHeight + th + footHeight),
-                new Vector3d(-th, mth + th + batteryHeight + th + footHeight)
+        return Extrude.points(Vector3d.xyz(0, 0, connectorDepth),
+                Vector3d.xy(-th, -th),
+                Vector3d.xy(smh + pth + ph+o, -th),
+                Vector3d.xy(smh + pth + Math.max(ph / 3, 0.4)+o, 0 + po),
+                Vector3d.xy(smh + pth+o, 0 + po),
+                Vector3d.xy(smh+o, 0),
+                Vector3d.xy(0+o, 0),
+                Vector3d.xy(0+o, mth),
+                Vector3d.xy(smh+o, mth),
+                Vector3d.xy(smh+o, mth + th),
+                Vector3d.xy(0, mth + th),
+                Vector3d.xy(0, mth + th + batteryHeight),
+                Vector3d.xy(batteryLength, mth + th + batteryHeight),
+                Vector3d.xy(batteryLength, mth + th + batteryHeight * 0.3),
+                Vector3d.xy(batteryLength + th, mth + th + batteryHeight * 0.3),
+                Vector3d.xy(batteryLength + th, mth + th + batteryHeight + th),
+                Vector3d.xy(0, mth + th + batteryHeight + th),
+                Vector3d.xy(0, mth + th + batteryHeight + th + footHeight - th * 2),
+                Vector3d.xy(footSize, mth + th + batteryHeight + th + footHeight - th),
+                Vector3d.xy(footSize, mth + th + batteryHeight + th + footHeight),
+                Vector3d.xy(-th, mth + th + batteryHeight + th + footHeight)
         );
     }
 }

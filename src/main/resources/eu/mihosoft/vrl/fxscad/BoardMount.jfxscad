@@ -19,40 +19,40 @@ public class RaspberryPiBPlusMount {
         double sd3 = 18;
 
         Polygon board_points_exact = Polygon.fromPoints(
-                new Vector3d(0, 0),
-                new Vector3d(0, bh),
-                new Vector3d(bw, bh),
-                new Vector3d(bw, bh - sd1),
-                new Vector3d(bw - sd3, bh - sd1),
-                new Vector3d(bw - sd3, sd2),
-                new Vector3d(bw, sd2),
-                new Vector3d(bw, 0)
+                Vector3d.xy(0, 0),
+                Vector3d.xy(0, bh),
+                Vector3d.xy(bw, bh),
+                Vector3d.xy(bw, bh - sd1),
+                Vector3d.xy(bw - sd3, bh - sd1),
+                Vector3d.xy(bw - sd3, sd2),
+                Vector3d.xy(bw, sd2),
+                Vector3d.xy(bw, 0)
         );
 
-        // outer offset 
+        // outer offset
         double ox1 = outer_offset;
         double oy1 = outer_offset;
 
         // inner offset
         double ox2 = inner_offset;
         double oy2 = inner_offset;
-        
+
         CSG outer = Extrude.points(
-                new Vector3d(0, 0, bottom_thickness),
-                new Vector3d(0-ox1,0-oy1),
-                new Vector3d(0-ox1,bh+oy1),
-                new Vector3d(bw+ox1,bh+oy1),
-                new Vector3d(bw+ox1,sd2),
-                new Vector3d(bw+ox1,0-oy1)
+                Vector3d.xyz(0, 0, bottom_thickness),
+                Vector3d.xy(0-ox1,0-oy1),
+                Vector3d.xy(0-ox1,bh+oy1),
+                Vector3d.xy(bw+ox1,bh+oy1),
+                Vector3d.xy(bw+ox1,sd2),
+                Vector3d.xy(bw+ox1,0-oy1)
         );
-        
+
         CSG inner = Extrude.points(
-                new Vector3d(0, 0, bottom_thickness),
-                new Vector3d(0+ox2,0+oy2),
-                new Vector3d(0+ox2,bh-oy2),
-                new Vector3d(bw-ox2,bh-oy2),
-                new Vector3d(bw-ox2,sd2-oy2),
-                new Vector3d(bw-ox2,0+oy2)
+                Vector3d.xyz(0, 0, bottom_thickness),
+                Vector3d.xy(0+ox2,0+oy2),
+                Vector3d.xy(0+ox2,bh-oy2),
+                Vector3d.xy(bw-ox2,bh-oy2),
+                Vector3d.xy(bw-ox2,sd2-oy2),
+                Vector3d.xy(bw-ox2,0+oy2)
         );
         
         return outer.difference(inner).transformed(Transform.unity().rotX(180).translateY(-bh));

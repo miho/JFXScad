@@ -26,7 +26,7 @@ repositories {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.6'
+    gradleVersion = '3.5'
 }
 
 dependencies {
@@ -48,7 +48,11 @@ dependencies {
     
     compile 'commons-io:commons-io:2.4'
     
-    compile fileTree (dir: 'libs/', includes: ['*.jar'])
+    // compile fileTree (dir: 'libs/', includes: ['*.jar'])
+
+    compile group: 'eu.mihosoft.vrl.jcsg', name: 'jcsg', version: '0.5.2'
+    compile group: 'eu.mihosoft.vrl.jcsg', name: 'jcsg', version: '0.5.2', classifier: 'sources'
+
 }
 
 // create a fat-jar (class files plus dependencies

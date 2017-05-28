@@ -18,17 +18,17 @@ public class ServoMount {
 
     public CSG toCSGSimple() {
 
-        return Extrude.points(new Vector3d(0, 0, servoMountHeight),
-                new Vector3d(0, servoThickness),
-                new Vector3d(overlap, servoThickness),
-                new Vector3d(-borderThickness, servoThickness + borderThickness),
-                new Vector3d(-borderThickness, -borderThickness),
-                new Vector3d(servoWidth + borderThickness, -borderThickness),
-                new Vector3d(servoWidth + borderThickness, servoThickness + borderThickness),
-                new Vector3d(servoWidth - overlap, servoThickness),
-                new Vector3d(servoWidth, servoThickness),
-                new Vector3d(servoWidth, 0),
-                new Vector3d(0, 0)
+        return Extrude.points(Vector3d.xyz(0, 0, servoMountHeight),
+                Vector3d.xy(0, servoThickness),
+                Vector3d.xy(overlap, servoThickness),
+                Vector3d.xy(-borderThickness, servoThickness + borderThickness),
+                Vector3d.xy(-borderThickness, -borderThickness),
+                Vector3d.xy(servoWidth + borderThickness, -borderThickness),
+                Vector3d.xy(servoWidth + borderThickness, servoThickness + borderThickness),
+                Vector3d.xy(servoWidth - overlap, servoThickness),
+                Vector3d.xy(servoWidth, servoThickness),
+                Vector3d.xy(servoWidth, 0),
+                Vector3d.xy(0, 0)
         );
     }
 
@@ -45,19 +45,19 @@ translateX(servoWidth -boardHolderLength + borderThickness*2));
     private CSG boardMount() {
 
         double h = boardMountingWidth;
-        
+
         List<Vector3d> points = Arrays.asList(Vector3d.ZERO,
-                new Vector3d(0, -borderThickness),
-                new Vector3d(boardMountingThickness + borderThickness, -borderThickness),
-                new Vector3d(boardMountingThickness + borderThickness, h + pegToothHeight+pegHeight),
-                new Vector3d(boardMountingThickness - pegOverlap, h + pegToothHeight),
-                 new Vector3d(boardMountingThickness, h),
-                new Vector3d(boardMountingThickness, 0)
+                Vector3d.xy(0, -borderThickness),
+                Vector3d.xy(boardMountingThickness + borderThickness, -borderThickness),
+                Vector3d.xy(boardMountingThickness + borderThickness, h + pegToothHeight+pegHeight),
+                Vector3d.xy(boardMountingThickness - pegOverlap, h + pegToothHeight),
+                 Vector3d.xy(boardMountingThickness, h),
+                Vector3d.xy(boardMountingThickness, 0)
         );
-        
+
         Collections.reverse(points);
 
-        return Extrude.points(new Vector3d(0,0,boardHolderLength),
+        return Extrude.points(Vector3d.xyz(0,0,boardHolderLength),
                 points
         );
     }

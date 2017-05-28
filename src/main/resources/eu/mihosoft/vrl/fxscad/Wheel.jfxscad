@@ -78,16 +78,16 @@ public class ServoWheel {
     public CSG servoArm(
             double innerWidth, double outerWidth, double thickness, double radius, double wheelThickness, double minorArmThickness, double minorArmLegth, double minorArmHeight) {
         CSG mainArm = Extrude.points(Vector3d.z(thickness),
-                new Vector3d(-innerWidth * 0.5, 0),
-                new Vector3d(innerWidth * 0.5, 0),
-                new Vector3d(outerWidth * 0.5, radius - wheelThickness),
-                new Vector3d(-outerWidth * 0.5, radius - wheelThickness)
+                Vector3d.xy(-innerWidth * 0.5, 0),
+                Vector3d.xy(innerWidth * 0.5, 0),
+                Vector3d.xy(outerWidth * 0.5, radius - wheelThickness),
+                Vector3d.xy(-outerWidth * 0.5, radius - wheelThickness)
         );
 
         CSG minorArm = Extrude.points(Vector3d.z(minorArmThickness),
-                new Vector3d(headDiameter * 0.5 + headThickness * 0.5, thickness),
-                new Vector3d(minorArmLegth - headDiameter * 0.5 - headThickness * 0.5, thickness),
-                new Vector3d(headDiameter * 0.5 + headThickness * 0.5, minorArmHeight + thickness * 0.5)).transformed(unity().rot(-90, 0, 0).translateZ(-minorArmThickness * 0.5));
+                Vector3d.xy(headDiameter * 0.5 + headThickness * 0.5, thickness),
+                Vector3d.xy(minorArmLegth - headDiameter * 0.5 - headThickness * 0.5, thickness),
+                Vector3d.xy(headDiameter * 0.5 + headThickness * 0.5, minorArmHeight + thickness * 0.5)).transformed(unity().rot(-90, 0, 0).translateZ(-minorArmThickness * 0.5));
 
         minorArm = minorArm.transformed(unity().rotZ(-90));
 

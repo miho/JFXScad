@@ -5,8 +5,8 @@
  */
 package eu.mihosoft.vrl.fxscad;
 
-import eu.mihosoft.vrl.v3d.CSG;
-import eu.mihosoft.vrl.v3d.MeshContainer;
+import eu.mihosoft.jcsg.CSG;
+import eu.mihosoft.jcsg.MeshContainer;
 import groovy.lang.Binding;
 import groovy.lang.GroovyShell;
 import groovy.lang.Script;
@@ -183,9 +183,15 @@ public class MainController implements Initializable {
 
             cc.addCompilationCustomizers(
                     new ImportCustomizer().
-                    addStarImports("eu.mihosoft.vrl.v3d",
-                            "eu.mihosoft.vrl.v3d.samples").
-                    addStaticStars("eu.mihosoft.vrl.v3d.Transform"));
+//                    addStarImports("eu.mihosoft.vrl.v3d",
+//                            "eu.mihosoft.vrl.v3d.samples").
+//                    addStaticStars("eu.mihosoft.vrl.v3d.Transform").
+
+                    addStarImports(
+                            "eu.mihosoft.jcsg",
+                            "eu.mihosoft.jcsg.samples", "eu.mihosoft.vvecmath").
+                    addStaticStars("eu.mihosoft.vvecmath.Transform")
+            );
 
             GroovyShell shell = new GroovyShell(getClass().getClassLoader(),
                     new Binding(), cc);
@@ -383,7 +389,7 @@ public class MainController implements Initializable {
         }
 
         try {
-            eu.mihosoft.vrl.v3d.FileUtil.write(
+            eu.mihosoft.jcsg.FileUtil.write(
                     Paths.get(fName), csgObject.toStlString());
         } catch (IOException ex) {
             Logger.getLogger(MainController.class.getName()).
