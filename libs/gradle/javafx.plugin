@@ -86,7 +86,7 @@ buildscript {
         }
 
 
-        classpath 'org.bitbucket.shemnon.javafxplugin:gradle-javafx-plugin:8.1.2-SNAPSHOT'
+        classpath 'org.bitbucket.shemnon.javafxplugin:gradle-javafx-plugin:8.1.1'
         classpath project.files(findAntJavaFXJar())
         classpath project.files(findJFXJar())
     }
