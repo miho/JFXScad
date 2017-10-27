@@ -39,10 +39,23 @@ Navigate to the [Gradle](http://www.gradle.org/) project (e.g., `path/to/JFXScad
 #### Bash (Linux/OS X/Cygwin/other Unix-like shell)
 
 ```sh
-gradlew assemble
-gradlew run
+sh gradlew assemble
+```
+
+To run the JFXScad via gradle type:
+
+```sh
+sh gradlew run
 ```
     
 #### Windows (CMD)
 
-    gradlew assemble
+```batch
+gradlew assemble
+```
+
+To run the JFXScad via gradle type:
+
+```batch
+gradlew run
+```
